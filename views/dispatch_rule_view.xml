@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="dispatch_rules_search_view" model="ir.ui.view">
+        <field name="name">order.dispatch.rule.search</field>
+        <field name="model">order.dispatch.rule</field>
+        <field name="arch" type="xml">
+            <search string="Dispatch rules search">
+                <field name="name" string="Dispatch rule" />
+                <field name="active" />
+                <filter
+                    string="Archived"
+                    name="inactive"
+                    domain="[('active', '=', False)]"
+                />
+            </search>
+        </field>
+    </record>
+
+    <record id="dispatch_rules_list_view" model="ir.ui.view">
+        <field name="name">order.dispatch.rule.list</field>
+        <field name="model">order.dispatch.rule</field>
+        <field name="priority">1</field>
+        <field name="arch" type="xml">
+            <tree string="Dispatch rules" sample="1">
+                <field name="priority" widget="handle" />
+                <field name="name" />
+                <field name="conditions" />
+                <field name="preferred_drivers" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="dispatch_rules_write_form" model="ir.ui.view">
+        <field name="name">order.dispatch.rule.form</field>
+        <field name="model">order.dispatch.rule</field>
+        <field name="arch" type="xml">
+            <form string="Dispatch rules">
+                <sheet>
+                    <widget
+                        name="web_ribbon"
+                        title="Inactive"
+                        bg_color="bg-danger"
+                        attrs="{'invisible': [('active', '=', True)]}"
+                    />
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Town B Small Package" />
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="active" invisible="1" />
+                            <field name="priority" />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Preference" name="preference_page">
+                            <group>
+                                <field name="conditions">
+                                    <tree>
+                                        <field name="sequence" widget="handle" />
+                                        <field name="name" />
+                                        <field name="condition" />
+                                        <field name="premise_value" optional="hide" />
+                                        <field name="premise_help" optional="hide" />
+                                    </tree>
+                                </field>
+                            </group>
+                            <group>
+                                <field name="preferred_drivers">
+                                    <tree>
+                                        <field name="driver_priority" widget="handle" />
+                                        <field name="display_name" />
+                                        <field name="has_vehicle" />
+                                        <field name="phone" />
+                                        <field name="email" />
+                                        <field name="city" />
+                                        <field name="country_id" />
+                                        <field name="company_id" />
+                                    </tree>
+                                </field>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="dispatch_rules_action_form" model="ir.actions.act_window">
+        <field name="name">Dispatch rules</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">order.dispatch.rule</field>
+        <field name="search_view_id" ref="dispatch_rules_search_view" />
+        <field name="view_id" ref="dispatch_rules_list_view" />
+        <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+            No dispatch rules.
+          </p>
+          <p>
+            Define dispatch rules that Odoo can use to
+            automatically assign drivers for delivery.
+          </p>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Add in inventory -->
+    <menuitem
+        id="menu_dispatch_in_stock_config"
+        name="Dispatch"
+        parent="stock.menu_stock_config_settings"
+        sequence="6"
+    />
+    <menuitem
+        id="menu_dispatch_rules_in_menu_dispatch_in_stock_config"
+        parent="menu_dispatch_in_stock_config"
+        action="order_dispatch.dispatch_rules_action_form"
+        name="Dispatch rules"
+        sequence="1"
+    />
+    <!-- Also add in sales -->
+    <menuitem
+        id="menu_dispatch_in_sales_config"
+        name="Dispatch"
+        parent="sale.menu_sale_config"
+        sequence="60"
+    />
+    <menuitem
+        id="menu_dispatch_rules_in_menu_dispatch_in_sales_config"
+        parent="menu_dispatch_in_sales_config"
+        action="order_dispatch.dispatch_rules_action_form"
+        name="Dispatch rules"
+        sequence="1"
+    />
+</odoo>
