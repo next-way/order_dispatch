@@ -117,9 +117,12 @@ class OrderCityFrom:
 
     @classmethod
     def get_matches(cls, env: api.Environment, premise_value: str):
-        country, city = list(
-            map(lambda x: x.strip().title(), premise_value.split(",", maxsplit=1))
-        )
+        try:
+            country, city = list(
+                map(lambda x: x.strip().title(), premise_value.split(",", maxsplit=1))
+            )
+        except (ValueError, AttributeError):
+            return
         orders = env["sale.order"].search(
             domain=[
                 ("picking_ids.partner_id.country_id.name", "=", country),

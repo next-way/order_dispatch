@@ -32,4 +32,18 @@ policy. Consult each module's `__manifest__.py` file, which contains a `license`
 that explains its license.
 
 ----
-<!-- /!\ Non OCA Context : Set here the full description of your organization. -->
+
+Credits
+=======
+
+Authors
+~~~~~~~
+
+* Aldrin Navarro
+
+Maintainers
+~~~~~~~~~~~
+
+.. |maintainer-aldrin| image:: https://github.com/aldnav.png?size=40px
+    :target: https://github.com/aldnav
+    :alt: aldrin
