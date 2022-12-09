@@ -11,6 +11,7 @@
     "post_init_hook": "create_default_conditions_data",
     # always loaded
     "data": [
+        "security/order_dispatch_security.xml",
         "security/ir.model.access.csv",
         "views/dispatch_rule_view.xml",
         "views/dispatch_rule_menu.xml",
