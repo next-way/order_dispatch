@@ -15,6 +15,7 @@
         "security/ir.model.access.csv",
         "views/dispatch_rule_view.xml",
         "views/dispatch_rule_menu.xml",
+        "views/stock_picking_views.xml",
     ],
     # only loaded in demonstration mode
     # "demo": [

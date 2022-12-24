@@ -33,11 +33,13 @@ props/methods:
 - addons.delivery.wizard.choose_delivery_carrier
 .ChooseDeliveryCarrier._compute_available_carrier
 """
-
+import logging
 from ast import literal_eval
 from typing import Protocol
 
 from odoo import _, api
+
+_logger = logging.getLogger(__name__)
 
 
 class Condition(Protocol):
@@ -123,6 +125,7 @@ class OrderCityFrom:
             )
         except (ValueError, AttributeError):
             return
+        _logger.info("[.] OrderCityFrom country=(%s) city=(%s)", country, city)
         orders = env["sale.order"].search(
             domain=[
                 ("picking_ids.partner_id.country_id.name", "=", country),
